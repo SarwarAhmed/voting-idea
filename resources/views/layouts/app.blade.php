@@ -48,5 +48,31 @@
                 </a>
             </div>
         </header>
+
+        <main class="container mx-auto max-w-custom flex">
+            <div class="w-70 mr-5">
+                <h3>Add an Idea</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, praesentium!</p>
+            </div>
+
+            <div class="w-175">
+                <nav class="flex items-center justify-between text-xs">
+                    <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                        <li><a href="#" class="border-b-4 pb-3 border-blue">All Ideas (85)</a></li>
+                        <li><a href="#" class="text-gray-500 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Considering (7)</a></li>
+                        <li><a href="#" class="text-gray-500 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">In Progress (3)</a></li>
+                    </ul>
+                    
+                    <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                        <li><a href="#" class="text-gray-500 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Implemented (7)</a></li>
+                        <li><a href="#" class="text-gray-500 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Closed (10)</a></li>
+                    </ul>
+                </nav>
+
+                <div class="mt-8">
+                    {{ $slot }}
+                </div>
+            </div>
+        </main>
     </body>
 </html>
