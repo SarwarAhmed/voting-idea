@@ -46,7 +46,7 @@
                 </div>
                 <div class="mx-4 w-full">
                     <h4 class="text-xl font-semibold">
-                        <a href="#" class="hover:underline">Random title can go here...</a>
+                        <a href="/idea" class="hover:underline">Random title can go here...</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -83,7 +83,7 @@
         </div> <!-- End idea container -->
         
         <div class="idea-container bg-white rounded-xl flex hover:shadow-card transition duration-150 ease-in cursor-pointer">
-            <div class="border-r border-gray-200 px-5 py-8">
+            <div iclass="border-r border-gray-200 px-5 py-8">
                 <div class="text-center">
                     <div class="font-semibold text-2xl">12</div>
                     <div class="text-gray-500">Votes</div>
