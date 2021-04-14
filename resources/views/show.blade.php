@@ -75,7 +75,7 @@
         <div class="flex items-center space-x-4 ml-6">
             <button type="submit"
                 class="flex items-center justify-center h-11 w-32 text-white text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
-                <span class="">Submit</span>
+                <span class="">Reply</span>
             </button>
 
             <button type="button"
