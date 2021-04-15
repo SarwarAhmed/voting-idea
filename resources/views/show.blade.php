@@ -8,15 +8,15 @@
         </a>
     </div>
 
-    <div class="idea-container bg-white rounded-xl flex ">
-        <div class="flex flex-1 px-4 py-6">
-            <div class="flex-none">
+    <div class="idea-container bg-white rounded-xl flex mt-4">
+        <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
+            <div class="flex-none mx-2 md:mx-4">
                 <a href="#">
                     <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
                         class="w-14 h-14 rounded-xl">
                 </a>
             </div>
-            <div class="mx-4 w-full">
+            <div class="mx-2 md:mx-4 w-full">
                 <h4 class="text-xl font-semibold">
                     <a href="/idea" class="hover:underline">Random title can go here...</a>
                 </h4>
@@ -30,10 +30,10 @@
                         labore nisi quia tempore esse.</p>
                 </div>
 
-                <div class="flex items-center justify-between mt-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
                     <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
-                        <a href="#" class="text-gray-900 font-bold">John Doe</a>
-                        <div>&bull;</div>
+                        <a href="#" class="hidden md:block htext-gray-900 mt-3 md:mt-0 font-bold">John Doe</a>
+                        <div class="hidden md:block">&bull;</div>
                         <div>10 Hours ago</div>
                         <div>&bull;</div>
                         <div>Category 1</div>
@@ -41,14 +41,11 @@
                         <div class="text-gray-900">3 Comments</div>
                     </div>
 
-                    <div
-                        x-data="{ isOpen: false }"
-                        class="flex items-center space-x-2">
+                    <div x-data="{ isOpen: false }" class="flex items-center space-x-2 mt-4 md:mt-0">
                         <div
                             class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             Open</div>
-                        <button
-                            @click="isOpen = !isOpen"
+                        <button @click="isOpen = !isOpen"
                             class="relative bg-gray-200 hover:bg-gray-300 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
                             <svg class="h-4" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -59,7 +56,7 @@
                                 x-show.transition.origin.top.left="isOpen"
                                 @click.away="isOpen = false"
                                 @keydown.escape.window="isOpen = false"
-                                class="absolute ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3">
+                                class="absolute ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                 <li>
                                     <a href="#"
                                         class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
@@ -73,42 +70,52 @@
                             </ul>
                         </button>
                     </div>
+
+                    {{-- For mobile --}}
+                    <div class="flex items-center md:hidden mt-4 md:mt-0">
+                        <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
+                            <div class="text-sm font-bold leading-none">12</div>
+                            <div class="text-xxs font-semibold leading-none text-gray-400">Votes</div>
+                        </div>
+                        <button
+                            class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3 -mx-5">
+                            Vote
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div> <!-- End idea container -->
 
     <div class="buttons-container flex items-center justify-between mt-6">
-        <div class="flex items-center space-x-4 ml-6">
-            <div 
+        <div class="flex flex-col md:flex-row items-center space-x-4 md:ml-6">
+            <div
                 x-data="{isOpen: false}"
                 class="relative">
-                <button type="submit"
+                <button 
+                    type="submit" 
                     @click="isOpen = !isOpen"
                     class="flex items-center justify-center h-11 w-32 text-white text-sm bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
                     <span class="">Reply</span>
                 </button>
-                <div
-                    x-cloak
-                    x-show.transition.origin.top.left="isOpen"
-                    @click.away="isOpen = false"
+                <div x-cloak x-show.transition.origin.top.left="isOpen" @click.away="isOpen = false"
                     @keydown.escape.window="isOpen = false"
-                    class="absolute z-10 w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
+                    class="absolute z-10 w-64 md:w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
                     <form action="#" class="space-y-4 px-4 py-6">
                         <div>
                             <textarea name="post_comment" id="pso_comment" cols="30" rows="4"
                                 class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2"
-                                placeholder="Go ahead, don't be shy. Share ..."></textarea>
+                                placeholder="Go ahead, don't be shy. Share..."></textarea>
                         </div>
 
-                        <div class="flex items-center space-x-3">
+                        <div class="flex flex-col md:flex-row items-center md:space-x-3">
                             <button type="submit"
-                                class="flex items-center justify-center h-11 w-1/2 text-white text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
+                                class="flex items-center justify-center h-11 w-full md:w-1/2 text-white text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
                                 Post Comment
                             </button>
 
                             <button type="button"
-                                class="flex items-center justify-center w-32 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
+                                class="flex items-center justify-center w-full md:w-32 h-11 mt-2 md:mt-0 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
                                 <svg class="text-gray-600 h-4 w-4 transform -rotate-45" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -124,9 +131,10 @@
             <div
                 x-data="{isOpen: false}" 
                 class="relative">
-                <button type="button"
+                <button
+                    type="button"
                     @click="isOpen = !isOpen"
-                    class="flex items-center justify-center h-11 w-36 text-sm bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
+                    class="flex items-center justify-center mt-2 md:mt-0 h-11 w-36 text-sm bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
                     <span>Set Status</span>
                     <svg class="h-4 w-4 text-gray-600 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -138,7 +146,7 @@
                     x-show.transition.origin.top.left="isOpen"
                     @click.away="isOpen = false"
                     @keydown.escape.window="isOpen = false"
-                    class="absolute z-20 w-76 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
+                    class="absolute z-20 w-64 md:w-76 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
                     <form action="#" class="space-y-4 px-4 py-6">
                         <div class="space-y-2">
                             <div>
@@ -211,7 +219,7 @@
             </div>
         </div>
 
-        <div class="flex items-center space-x-3">
+        <div class="hidden md:flex items-center space-x-3">
             <div class="bg-white font-semibold text-center rounded-xl px-3 py-2">
                 <div class="text-xl leading-snug">12</div>
                 <div class="text-gray-400 text-xs leading-none">Votes</div>
@@ -224,16 +232,16 @@
         </div>
     </div> <!-- End buttons-container -->
 
-    <div class="comments-container relative space-y-6 ml-22 pt-4 my-8 mt-1">
+    <div class="comments-container relative space-y-6 md:ml-22 pt-4 my-8 mt-1">
         <div class="comment-container relative bg-white rounded-xl flex ">
-            <div class="flex flex-1 px-4 py-6">
+            <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
                 <div class="flex-none">
                     <a href="#">
                         <img src="https://source.unsplash.com/200x200/?face&crop=face&v=2" alt="avatar"
                             class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
-                <div class="mx-4 w-full">
+                <div class="mx-4 md:w-full">
                     <div class="text-gray-600 xmt-3">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quae qui possimus harum
                             molestias
@@ -248,23 +256,18 @@
                             <div>10 Hours ago</div>
                         </div>
 
-                        <div 
-                            x-data="{isOpen : false}"
-                            class="flex items-center space-x-2">
-                            <button
-                                @click="isOpen = !isOpen"
+                        <div x-data="{isOpen : false}" class="flex items-center space-x-2">
+                            <button @click="isOpen = !isOpen"
                                 class="relative bg-gray-200 hover:bg-gray-300 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
                                 <svg class="h-4" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                 </svg>
                                 <ul
-                                    x-cloak
-                                    x-show.transition.origin.top.left="isOpen"
+                                    x-cloak x-show.transition.origin.top.left="isOpen"
                                     @click.away="isOpen = false"
                                     @keydown.escape.window="isOpen = false"
-
-                                    class="absolute z-10 ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3">
+                                    class="absolute ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                     <li>
                                         <a href="#"
                                             class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
@@ -310,22 +313,18 @@
                             <div>10 Hours ago</div>
                         </div>
 
-                        <div 
-                            x-data="{isOpen: false}"
-                            class="flex items-center space-x-2">
-                            <button
-                                @click="isOpen = !isOpen"
+                        <div x-data="{isOpen: false}" class="flex items-center space-x-2">
+                            <button @click="isOpen = !isOpen"
                                 class="relative bg-gray-200 hover:bg-gray-300 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
                                 <svg class="h-4" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                 </svg>
                                 <ul
-                                    x-cloak
-                                    x-show.transition.origin.top.left="isOpen"
+                                    x-cloak x-show.transition.origin.top.left="isOpen"
                                     @click.away="isOpen = false"
                                     @keydown.escape.window="isOpen = false"
-                                    class="absolute z-10 ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3">
+                                    class="absolute z-10 ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                     <li>
                                         <a href="#"
                                             class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
