@@ -51,7 +51,7 @@
 
     <main class="container mx-auto max-w-custom flex">
         <div class="w-70 mr-5">
-            <div class="bg-white border-2 border-blue rounded-xl mt-16" style="border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+            <div class="bg-white sticky top-8 border-2 border-blue rounded-xl mt-16" style="border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
                 border-image-slice: 1;
                 background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
                 background-origin: border-box;
