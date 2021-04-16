@@ -54,7 +54,7 @@ class User extends Authenticatable
             ? ord(strtolower($firstChar)) - 21
             : ord(strtolower($firstChar)) - 96;
 
-        return 'https://s.gravatar.com/avatar/'.
+        return 'https://www.gravatar.com/avatar/'.
             md5($this->email).
             '?s=200'.
             '&d=https://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-'.
