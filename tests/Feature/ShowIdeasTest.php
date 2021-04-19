@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Idea;
+use App\Models\User;
 use App\Models\Status;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -16,6 +17,8 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function list_of_ideas_on_main_page()
     {
+        $user = User::factory()->create();
+
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
@@ -23,12 +26,14 @@ class ShowIdeasTest extends TestCase
         $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
 
         $firstIdea = Idea::factory()->create([
+            'user_id' => $user->id,
             'title' => 'my first idea', 
             'category_id' => $categoryOne->id,
             'status_id' => $statusOpen->id,
         ]);
         
         $SecondIdea = Idea::factory()->create([
+            'user_id' => $user->id,
             'title' => 'my first idea',
             'category_id' => $categoryTwo->id,
             'status_id' => $statusConsidering->id,
@@ -55,10 +60,13 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function showing_single_idea_correctly_on_the_show_page()
     {
+        $user = User::factory()->create();
+
         $category = Category::factory()->create(['name' => 'Livewire']);
         $status = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
 
         $idea = Idea::factory()->create([
+            'user_id' => $user->id,
             'category_id' => $category->id,
             'status_id' => $status->id,
             'title' => 'My First Idea',
@@ -78,11 +86,14 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function idea_pagination_test()
     {
+        $user = User::factory()->create();
+
         $category = Category::factory()->create();
        
         $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
         
         Idea::factory(Idea::PAGINATION_COUNT + 1)->create([
+            'user_id' => $user->id,
             'category_id' => $category->id,
             'status_id' => $statusOpen->id,
         ]);
