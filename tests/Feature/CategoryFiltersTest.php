@@ -12,7 +12,7 @@ use App\Http\Livewire\IdeasIndex;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CategoryFlitersTest extends TestCase
+class CategoryFiltersTest extends TestCase
 {
     use RefreshDatabase;
 
