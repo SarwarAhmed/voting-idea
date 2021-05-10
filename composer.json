@@ -14,8 +14,10 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
+        "laravel/horizon": "^5.7",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.4"
+        "livewire/livewire": "^2.4",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -29,6 +31,10 @@
         "phpunit/phpunit": "^9.3.3"
     },
     "config": {
+        "platform": {
+            "ext-pcntl": "7.3",
+            "ext-posix": "7.3"
+        },
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
