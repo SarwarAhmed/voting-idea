@@ -122,5 +122,10 @@ class CreateIdeasTest extends TestCase
             'title' => 'My First Idea',
             'slug' => 'my-first-idea-2'
         ]);
+
+        $this->assertDatabaseHas('votes', [
+            'idea_id' => 1,
+            'user_id' => 1,
+        ]);
     }
 }
