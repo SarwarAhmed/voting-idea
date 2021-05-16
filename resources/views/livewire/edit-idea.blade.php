@@ -1,4 +1,10 @@
-<div class="fixed z-10 inset-x-0 bottom-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+<div 
+    x-cloak
+    x-data="{ isOpen : false }"
+    x-show="isOpen"
+    @keydown.escape.window="isOpen = false"
+    @custom-show-edit-modal.window="isOpen = true"
+    class="fixed z-10 inset-x-0 bottom-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
     aria-modal="true">
     <div class="flex items-end justify-center min-h-screen>
         <!--
@@ -6,7 +12,10 @@
   
         Entering: " ease-out duration-300" From: "opacity-0" To: "opacity-100" Leaving: "ease-in duration-200"
         From: "opacity-100" To: "opacity-0" -->
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        <div 
+            x-show.transition.opacity="isOpen"
+            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true">
+        </div>
 
         <!--
         Modal panel, show/hide based on modal state.
@@ -19,9 +28,12 @@
           To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
       -->
         <div
+            x-show.transition.origin.bottom.duration.300ms="isOpen"
             class="modal bg-white rounded-tl-xl rounded-tr-xl overflow-hidden transform transition-all py-4 sm:max-w-lg sm:w-full">
             <div class="absolute top-0 right-0 pt-4 pr-4">
-                <button class="text-gray-500 hover:text-gray-600">
+                <button 
+                    @click="isOpen = false"
+                    class="text-gray-500 hover:text-gray-600">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
