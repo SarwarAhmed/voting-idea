@@ -4,6 +4,11 @@
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
     @custom-show-edit-modal.window="isOpen = true"
+    x-init="
+        window.livewire.on('ideaWasUpdated', () => {
+            isOpen = false
+        }) 
+    "
     class="fixed z-10 inset-x-0 bottom-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
     aria-modal="true">
     <div class="flex items-end justify-center min-h-screen>
@@ -46,7 +51,7 @@
                 <div class="text-xs text-center text-gray-500 mt-2 px-6">You have one hour to edit your Idea from the time
                     you created it.</div>
 
-                <form wire:submit.prevent="createIdea" action="" method="POST" class="space-y-4 px-4 py-6">
+                <form wire:submit.prevent="updateIdea" action="" method="POST" class="space-y-4 px-4 py-6">
                     <div>
                         <input type="text" wire:model.defer="title"
                             class="w-full bg-gray-100 border-none rounded-xl text-sm placeholder-gray-900 px-4 py-2"
@@ -59,7 +64,9 @@
                     <div>
                         <select wire:model.defer="category" name="category_add" id="category_add"
                             class="w-full bg-gray-100 text-sm rounded-xl border-none px-4 py-2">
-                            <option value="1">Category 1</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                         @error('category')
                             <p class="text-red text-sm mt-1">{{ $message }}</p>
@@ -88,7 +95,7 @@
 
                         <button type="submit"
                             class="flex items-center justify-center w-1/2 h-11 text-white text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
-                            <span class="">Submit</span>
+                            <span class="">Update</span>
                         </button>
                     </div>
 
