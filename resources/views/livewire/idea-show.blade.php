@@ -51,8 +51,7 @@
                                                 $dispatch('custom-show-edit-modal')
                                                 isOpen = false
                                             "
-                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Edit
-                                            Idea</a>
+                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Edit Idea</a>
                                     </li>
                                 @endcan
                                 <li>
