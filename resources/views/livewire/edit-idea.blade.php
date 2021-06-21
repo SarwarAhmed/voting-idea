@@ -3,7 +3,10 @@
     x-data="{ isOpen : false }"
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
-    @custom-show-edit-modal.window="isOpen = true"
+    @custom-show-edit-modal.window="
+        isOpen = true
+        $nextTick(() => $refs.title.focus())
+    "
     x-init="
         window.livewire.on('ideaWasUpdated', () => {
             isOpen = false
@@ -54,6 +57,7 @@
                 <form wire:submit.prevent="updateIdea" action="" method="POST" class="space-y-4 px-4 py-6">
                     <div>
                         <input type="text" wire:model.defer="title"
+                            x-ref="title"
                             class="w-full bg-gray-100 border-none rounded-xl text-sm placeholder-gray-900 px-4 py-2"
                             placeholder="Your Idea">
                         @error('title')

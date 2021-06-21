@@ -47,18 +47,24 @@
                                 @can('update', $idea)
                                     <li>
                                         <a href="#"
-                                            @click="
+                                            @click.prevent="
                                                 $dispatch('custom-show-edit-modal')
                                                 isOpen = false
                                             "
                                             class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Edit Idea</a>
                                     </li>
                                 @endcan
+                                
+                                @can('delete', $idea)
                                 <li>
                                     <a href="#"
-                                        class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Delete
-                                        Idea</a>
+                                        @click.prevent="
+                                            $dispatch('custom-show-delete-modal')
+                                            isOpen = false
+                                        "
+                                        class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Delete Idea</a>
                                 </li>
+                                @endcan
                                 <li>
                                     <a href="#"
                                         class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
