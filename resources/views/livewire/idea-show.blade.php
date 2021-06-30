@@ -78,6 +78,17 @@
                                         "
                                         class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark as Span</a>
                                 </li>
+
+                                @admin
+                                    <li>
+                                        <a href="#"
+                                            @click.prevent="
+                                                isOpen = false
+                                                $dispatch('custom-show-mark-idea-as-not-spam-modal')
+                                            "
+                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Not Span</a>
+                                    </li>
+                                @endadmin
                             </ul>
                         </div>
                     </div>
