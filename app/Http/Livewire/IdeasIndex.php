@@ -17,7 +17,7 @@ class IdeasIndex extends Component
     public $category;
     public $filter;
     public $search;
-    
+
     protected   $queryString = [
         'status',
         'category',
@@ -36,12 +36,12 @@ class IdeasIndex extends Component
     {
         $this->resetPage();
     }
-    
+
     public function updatingFilter()
     {
         $this->resetPage();
     }
-    
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -50,7 +50,7 @@ class IdeasIndex extends Component
     public function updatedFilter()
     {
         if ($this->filter === 'My Ideas') {
-            if (! auth()->check()) {
+            if (!auth()->check()) {
                 return redirect()->route('login');
             }
         }
@@ -58,7 +58,11 @@ class IdeasIndex extends Component
 
     public function queryStringUpdatedStatus($newStatus)
     {
-       $this->status = $newStatus; 
+        $this->status = $newStatus;
+        $this->status = $newStatus; 
+        $this->status = $newStatus;
+        $this->status = $newStatus; 
+        $this->status = $newStatus;
         $this->resetPage();
     }
 
@@ -80,6 +84,9 @@ class IdeasIndex extends Component
                 })
                 ->when($this->filter && $this->filter === 'My Ideas', function ($query) {
                     return $query->where('user_id', auth()->id());
+                })
+                ->when($this->filter && $this->filter === 'Spam Ideas', function ($query) {
+                    return $query->where('spam_reports', '>', 0)->orderByDesc('spam_reports');
                 })
                 ->when(strlen($this->search) >= 3, function ($query) {
                     return $query->where('title', 'like', '%'.$this->search.'%');
