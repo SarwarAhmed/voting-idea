@@ -35,62 +35,64 @@
 
                     <div x-data="{ isOpen: false }" class="flex items-center space-x-2 mt-4 md:mt-0">
                         <div class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
-                        <div class="relative">
-                            <button @click="isOpen = !isOpen"
-                                class="relative bg-gray-200 hover:bg-gray-300 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
-                                <svg class="h-4" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                </svg>
-                            </button>
-                            <ul
-                                x-cloak
-                                x-show.transition.origin.top.left="isOpen"
-                                @click.away="isOpen = false"
-                                @keydown.escape.window="isOpen = false"
-                                class="absolute ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
-                                @can('update', $idea)
+                        @auth
+                            <div class="relative">
+                                <button @click="isOpen = !isOpen"
+                                    class="relative bg-gray-200 hover:bg-gray-300 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
+                                    <svg class="h-4" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                    </svg>
+                                </button>
+                                <ul
+                                    x-cloak
+                                    x-show.transition.origin.top.left="isOpen"
+                                    @click.away="isOpen = false"
+                                    @keydown.escape.window="isOpen = false"
+                                    class="absolute ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
+                                    @can('update', $idea)
+                                        <li>
+                                            <a href="#"
+                                                @click.prevent="
+                                                    $dispatch('custom-show-edit-modal')
+                                                    isOpen = false
+                                                "
+                                                class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Edit Idea</a>
+                                        </li>
+                                    @endcan
+                                    
+                                    @can('delete', $idea)
                                     <li>
                                         <a href="#"
                                             @click.prevent="
-                                                $dispatch('custom-show-edit-modal')
+                                                $dispatch('custom-show-delete-modal')
                                                 isOpen = false
                                             "
-                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Edit Idea</a>
+                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Delete Idea</a>
                                     </li>
-                                @endcan
-                                
-                                @can('delete', $idea)
-                                <li>
-                                    <a href="#"
-                                        @click.prevent="
-                                            $dispatch('custom-show-delete-modal')
-                                            isOpen = false
-                                        "
-                                        class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Delete Idea</a>
-                                </li>
-                                @endcan
-                                <li>
-                                    <a href="#"
-                                        @click.prevent="
-                                            isOpen = false
-                                            $dispatch('custom-show-mark-idea-as-spam-modal')
-                                        "
-                                        class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark as Span</a>
-                                </li>
-
-                                @admin
+                                    @endcan
                                     <li>
                                         <a href="#"
                                             @click.prevent="
                                                 isOpen = false
-                                                $dispatch('custom-show-mark-idea-as-not-spam-modal')
+                                                $dispatch('custom-show-mark-idea-as-spam-modal')
                                             "
-                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Not Span</a>
+                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark as Spam</a>
                                     </li>
-                                @endadmin
-                            </ul>
-                        </div>
+    
+                                    @admin
+                                        <li>
+                                            <a href="#"
+                                                @click.prevent="
+                                                    isOpen = false
+                                                    $dispatch('custom-show-mark-idea-as-not-spam-modal')
+                                                "
+                                                class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Not Spam</a>
+                                        </li>
+                                    @endadmin
+                                </ul>
+                            </div>
+                        @endauth
                     </div>
 
                     {{-- For mobile --}}

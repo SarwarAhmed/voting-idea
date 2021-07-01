@@ -77,7 +77,7 @@
                             class="absolute ml-8 w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 md:ml-8 top-8 md:top-6 right-0 md:left-0"
                         >
                             <li>
-                                <a href="#" class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark as Span</a>
+                                <a href="#" class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark as Spam</a>
                             </li>
                             <li>
                                 <a href="#" class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Delete Post</a>
